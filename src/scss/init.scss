@@ -1,0 +1,22 @@
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+//////////////// INIT FILE  /////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+// General
+@import "./general/reset";
+@import "./general/color";
+@import "./general/variables";
+@import "general/_general";
+
+// Components
+@import "./components/navbar";
+@import "./components/footer";
+@import "./components/articleCard";
+@import "./components/articleTag";
+@import "./components/background";
+// Pages
+@import "./pages/home";
+@import "./pages/blog";
+@import "./pages/singleArticle";
+
