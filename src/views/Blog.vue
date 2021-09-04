@@ -18,7 +18,7 @@
             :mainPhoto="article.mainPhoto"
             :title="article.title"
             :date="article.date"
-            :description="article.content"
+            :description="article.preview"
             :author="article.authors"
             :tagname="article.category.name"
             :bestOf="bestOf"
@@ -70,7 +70,7 @@
                   :mainPhoto="article.mainPhoto"
                   :title="article.title"
                   :date="article.date"
-                  :description="article.content"
+                  :description="article.preview"
                   :author="article.authors"
                   :tagname="article.category.name"
                   :bestOf="article.bestOf"
@@ -100,30 +100,6 @@ export default {
   data() {
     return {
       vertical: true,
-      bestOf: true,
-      title: "Title blog",
-      mainPhoto: "http://placehold.jp/344x278.png",
-      date: {
-        d: "26",
-        m: "04",
-        y: "2020",
-      },
-      name: "Développement web",
-      content:
-          "Wesh l’EMLV c’est qui ? Découvrez toutes les joies du chômage avec notre réportaire juste ici... ",
-      authors: {
-        name: "Test",
-        lastName: "Test",
-        avatar: {
-          name: "Test_photo",
-          alternativeText: "",
-          formats: {
-            thumbnail: {
-              url: "http://placehold.jp/344x278.png"
-            }
-          }
-        },
-      },
       articles: [],
       filters: [],
       clickableFilters: true,
@@ -144,21 +120,15 @@ export default {
     },
     fetchCategories() {
       axios.get(process.env.VUE_APP_API_URL + "/categories")
-          .then(res => {
-            res.data.forEach((el, index) => {
-              el.isActive = false;
-              el.id = index
-              this.filters.push(el)
-            })
-          })
+          .then(res => res.data.forEach((el, index) => {
+            el.isActive = false;
+            el.id = index
+            this.filters.push(el)
+          }))
     },
     fetchArticles() {
       axios.get(process.env.VUE_APP_API_URL + "/articles")
-          .then(res => {
-            res.data.forEach((el) => {
-              this.articles.push(el)
-            })
-          })
+          .then(res => res.data.forEach((el) => this.articles.push(el)))
     },
     changeClass(id) {
       this.filters[id].isActive = !this.filters[id].isActive;
@@ -190,9 +160,6 @@ export default {
       this.bestOfResponsive();
     });
   },
-  updated() {
-    console.log(this.filters)
-  }
 };
 </script>
 

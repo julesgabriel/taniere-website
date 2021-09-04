@@ -33,7 +33,7 @@
               stroke-linejoin="round"
           />
         </svg>
-        <vue-markdown :source="description.substring(0,82)" class="description"/>
+        <p class="description">{{description}}</p>
       </div>
       <div class="authors">
         <img v-for="(item ,index) in author" :src="envApiUrl + item.avatar.formats.thumbnail.url" alt="ok"
@@ -45,7 +45,6 @@
 
 <script>
 import ArticleTag from "./articleTag";
-import VueMarkdown from 'vue-markdown-render'
 
 export default {
   name: "ArticleCard",
@@ -61,11 +60,6 @@ export default {
   },
   components: {
     ArticleTag,
-    VueMarkdown
-  },
-  mounted() {
-    let listOfProps = Object.getOwnPropertyNames(this.author)
-    listOfProps.forEach(elementProp => console.log(this.author[elementProp]));
   },
   methods: {
     clicked() {
