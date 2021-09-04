@@ -12,14 +12,15 @@
           Réservé uniquement pour les curieux
         </p>
       </div>
-      <div class="bestOfContainer">
+      <div class="bestOfContainer" v-for="(article, index) in articles" :key="index">
         <ArticleCard
-            :thumbnail="thumbnail"
-            :title="title"
-            :date="date"
-            :description="description"
-            :author="author"
-            :tagname="tagname"
+            v-if="article.bestOf"
+            :mainPhoto="article.mainPhoto"
+            :title="article.title"
+            :date="article.date"
+            :description="article.content"
+            :author="article.authors"
+            :tagname="article.category.name"
             :bestOf="bestOf"
             v-bind:class="{
             bestOf,
@@ -40,7 +41,7 @@
               clickable: clickableFilters,
             }"
               v-on:click.native="changeClass(filter.id)"
-              :tagname="filter.tagname"
+              :tagname="filter.name"
               :clickable="clickableFilters"
           />
         </div>
@@ -52,8 +53,8 @@
       >
         <div class="container-tags">
           <ArticleTag
-              v-if="getActiveFilter(filter.tagname)"
-              :tagname="filter.tagname"
+              v-if="getActiveFilter(filter.name)"
+              :tagname="filter.name"
               :vertical="vertical"
               v-bind:class="{
               vertical,
@@ -61,18 +62,21 @@
             }"
           />
         </div>
-        <div v-if="getActiveFilter(filter.tagname)" class="container-cards">
+        <div v-if="getActiveFilter(filter.name)" class="container-cards">
           <div v-for="article in articles" :key="'article-' + article.id">
-            <ArticleCard
-                v-if="filter.tagname === article.tagname"
-                :thumbnail="article.thumbnail"
-                :title="article.title"
-                :date="article.date"
-                :description="article.description"
-                :author="article.author"
-                :tagname="article.tagname"
-                @clicked="navigate"
-            />
+            <div v-if="!article.bestOf">
+              <ArticleCard
+                  v-if="filter.name === article.category.name"
+                  :mainPhoto="article.mainPhoto"
+                  :title="article.title"
+                  :date="article.date"
+                  :description="article.content"
+                  :author="article.authors"
+                  :tagname="article.category.name"
+                  :bestOf="article.bestOf"
+                  @clicked="navigate"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -85,6 +89,7 @@ import BackgroundBlog from "@/components/backgroundBlog.vue";
 import ArticleCard from "@/components/articleCard.vue";
 import ArticleTag from "@/components/articleTag.vue";
 import router from "../router";
+import axios from "axios";
 
 export default {
   components: {
@@ -97,198 +102,30 @@ export default {
       vertical: true,
       bestOf: true,
       title: "Title blog",
-      thumbnail: "http://placehold.jp/344x278.png",
+      mainPhoto: "http://placehold.jp/344x278.png",
       date: {
         d: "26",
         m: "04",
         y: "2020",
       },
-      tagname: "Development",
-      description:
+      name: "Développement web",
+      content:
           "Wesh l’EMLV c’est qui ? Découvrez toutes les joies du chômage avec notre réportaire juste ici... ",
-      author: {
+      authors: {
         name: "Test",
-        img: "http://placehold.jp/31x31.png",
+        lastName: "Test",
+        avatar: {
+          name: "Test_photo",
+          alternativeText: "",
+          formats: {
+            thumbnail: {
+              url: "http://placehold.jp/344x278.png"
+            }
+          }
+        },
       },
-      articles: [
-        {
-          id: 0,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Development",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 1,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Data",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 2,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Design",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 3,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Digital",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 4,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Veille",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 5,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Data",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 6,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Design",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 7,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Data",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 8,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Data",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-        {
-          id: 9,
-          title: "Title blog",
-          thumbnail: "http://placehold.jp/344x278.png",
-          date: {
-            d: "26",
-            m: "04",
-            y: "2020",
-          },
-          tagname: "Development",
-          description:
-              "Phasellus accumsan, ante a volutpat element, justo lectus hendrerit mi, elementum ",
-          author: {
-            name: "Test",
-            img: "http://placehold.jp/31x31.png",
-          },
-        },
-      ],
-      filters: [
-        {id: 0, tagname: "Development", isActive: false},
-        {id: 1, tagname: "Data", isActive: false},
-        {id: 2, tagname: "Veille", isActive: false},
-        {id: 3, tagname: "Design", isActive: false},
-        {id: 4, tagname: "Digital", isActive: false},
-      ],
+      articles: [],
+      filters: [],
       clickableFilters: true,
       unclickable: true,
     };
@@ -297,15 +134,31 @@ export default {
     // Get only the articles if the filter is active or if as article
     getActiveFilter(filterName) {
       if (this.filters.find((filter) => filter.isActive)) {
-        let currentFilter = this.filters.find(
-            (filter) => filter.tagname === filterName
-        );
-        if (currentFilter.isActive) return !!this.articles.find((article) => article.tagname === filterName);
+        let currentFilter = this.filters.find((filter) => filter.name === filterName);
+        if (currentFilter.isActive) return !!this.articles.find((article) => article.category.name === filterName);
         else return false;
-      } else return !!this.articles.find((article) => article.tagname === filterName);
+      } else return !!this.articles.find((article) => article.category.name === filterName);
     },
     navigate() {
       router.push({path: "/article/1"})
+    },
+    fetchCategories() {
+      axios.get(process.env.VUE_APP_API_URL + "/categories")
+          .then(res => {
+            res.data.forEach((el, index) => {
+              el.isActive = false;
+              el.id = index
+              this.filters.push(el)
+            })
+          })
+    },
+    fetchArticles() {
+      axios.get(process.env.VUE_APP_API_URL + "/articles")
+          .then(res => {
+            res.data.forEach((el) => {
+              this.articles.push(el)
+            })
+          })
     },
     changeClass(id) {
       this.filters[id].isActive = !this.filters[id].isActive;
@@ -330,11 +183,16 @@ export default {
     },
   },
   mounted() {
+    this.fetchCategories();
+    this.fetchArticles();
     this.bestOfResponsive();
     window.addEventListener("resize", () => {
       this.bestOfResponsive();
     });
   },
+  updated() {
+    console.log(this.filters)
+  }
 };
 </script>
 
