@@ -12,16 +12,16 @@
           Réservé uniquement pour les curieux
         </p>
       </div>
-      <div class="bestOfContainer" v-for="(article, index) in articles" :key="index">
+      <div class="bestOfContainer" v-for="(article, index) in articles.filter(item => item.bestOf)" :key="index">
         <ArticleCard
-            v-if="article.bestOf"
             :mainPhoto="article.mainPhoto"
             :title="article.title"
             :date="article.date"
             :description="article.preview"
             :author="article.authors"
             :tagname="article.category.name"
-            :bestOf="bestOf"
+            :bestOf="article.bestOf"
+            @clicked="navigate('article', article.slug)"
             v-bind:class="{
             bestOf,
           }"
@@ -74,7 +74,7 @@
                   :author="article.authors"
                   :tagname="article.category.name"
                   :bestOf="article.bestOf"
-                  @clicked="navigate"
+                  @clicked="navigate('article', article.slug)"
               />
             </div>
           </div>
@@ -88,8 +88,8 @@
 import BackgroundBlog from "@/components/backgroundBlog.vue";
 import ArticleCard from "@/components/articleCard.vue";
 import ArticleTag from "@/components/articleTag.vue";
-import router from "../router";
-import axios from "axios";
+import navigate from "../logic/navigation";
+import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
 
 export default {
   components: {
@@ -107,6 +107,7 @@ export default {
     };
   },
   methods: {
+    GetDataFetchedFromApi,
     // Get only the articles if the filter is active or if as article
     getActiveFilter(filterName) {
       if (this.filters.find((filter) => filter.isActive)) {
@@ -115,11 +116,9 @@ export default {
         else return false;
       } else return !!this.articles.find((article) => article.category.name === filterName);
     },
-    navigate() {
-      router.push({path: "/article/1"})
-    },
+    navigate,
     fetchCategories() {
-      axios.get(process.env.VUE_APP_API_URL + "/categories")
+      GetDataFetchedFromApi("categories")
           .then(res => res.data.forEach((el, index) => {
             el.isActive = false;
             el.id = index
@@ -127,8 +126,14 @@ export default {
           }))
     },
     fetchArticles() {
-      axios.get(process.env.VUE_APP_API_URL + "/articles")
-          .then(res => res.data.forEach((el) => this.articles.push(el)))
+      GetDataFetchedFromApi("articles")
+          .then(res => {
+            console.log(res)
+            res.data.forEach((el) => {
+              this.articles.push(el)
+              console.log(res)
+            })
+          })
     },
     changeClass(id) {
       this.filters[id].isActive = !this.filters[id].isActive;
@@ -137,6 +142,7 @@ export default {
       let badge = document.getElementsByClassName("badge")[0];
       if (window.innerWidth < 550) {
         this.bestOf = false;
+        //TODO: Refactor ça en pushant une classlist dans ton badge stp
         badge.style.display = "block";
         badge.style.position = "absolute";
         badge.style.zIndex = "70";

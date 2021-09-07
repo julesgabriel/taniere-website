@@ -44,6 +44,9 @@ export default {
       navClass: "",
     }
   },
+  created() {
+    this.changeIndicatorColorAccordingToRouteContext()
+  },
   mounted() {
     this.setIndicatorPosition(this.$route.name)
   },
