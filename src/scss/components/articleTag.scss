@@ -26,7 +26,7 @@
 
 .clickable {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     margin: 15px 7px 0px;
 }
 
@@ -42,7 +42,6 @@
     position: absolute;
     transform: rotate(-90deg);
     @media screen and(max-width: 950px) {
-        // display: none;
         position: initial;
         transform: rotate(0deg);
         margin-left: 20px;

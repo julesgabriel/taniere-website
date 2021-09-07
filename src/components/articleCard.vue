@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="clicked">
-    <div class="badge">
+    <div class="badge badgeMobile">
       <p>Best of</p>
     </div>
     <div class="top">
@@ -53,10 +53,10 @@ export default {
     title: String,
     tagname: String,
     bestOf: Boolean,
-    date: Object,
+    date: String,
     description: String,
     mainPhoto: Object,
-    author: Object,
+    author: Array,
   },
   components: {
     ArticleTag,
