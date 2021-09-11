@@ -10,6 +10,9 @@
     border-radius: 5px;
     color: #FECC50;
     user-select: none;
+    .tag-text{
+        white-space: nowrap
+    }
     svg {
         display: none;
     }

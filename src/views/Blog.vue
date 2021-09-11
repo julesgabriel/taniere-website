@@ -152,7 +152,7 @@ export default {
       this.filters[id].isActive = !this.filters[id].isActive;
     },
     bestOfResponsive() {
-      window.innerWidth < 550 ? this.bestOf = false : this.bestOf = true
+      window.innerWidth < 550 ? (this.bestOf = false) : (this.bestOf = true);
     },
   },
   mounted() {
@@ -162,6 +162,7 @@ export default {
     window.addEventListener("resize", () => {
       this.bestOfResponsive();
     });
+    
   },
 };
 </script>
