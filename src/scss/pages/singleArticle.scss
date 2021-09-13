@@ -102,6 +102,7 @@ body {
           font-weight: 600;
           font-size: 46px;
           letter-spacing: 0.06em;
+          line-height: 50px;
         }
 
         .tags {
@@ -155,19 +156,17 @@ body {
             display: flex;
             align-items: center;
             flex-direction: column;
-            a{
-              display: flex;
-              justify-content: center;
-              img {
-                margin: 25px 0;
-                width: 95%;
-                @media screen and(max-width: 850px) {
-                  margin: 5.5px 0;
-                }
-                @media screen and(max-width: 500px) {
-                  max-width: 330px;
-                }
+
+            img {
+              margin: 25px 0;
+              width: 90%;
+              @media screen and(max-width: 850px) {
+                margin: 5.5px 0;
               }
+              @media screen and(max-width: 500px) {
+                max-width: 330px;
+              }
+
             }
 
           }
@@ -175,4 +174,5 @@ body {
       }
     }
   }
+
 }

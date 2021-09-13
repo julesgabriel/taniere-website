@@ -45,15 +45,10 @@
             renderAuthorsSentence(this.article.authors)
           }}
         </div>
-        <div class="annexes">
+        <div v-if="article.annexes.length > 0" class="annexes">
           <p>Annexes</p>
           <div class="images">
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <img v-for="annexe in article.annexes" :key="annexe.id" :src="envApiUrl + annexe.formats.medium.url" alt=""/>
           </div>
         </div>
       </div>
@@ -109,7 +104,8 @@ export default {
   mounted() {
     GetDataFetchedFromApi("articles", this.$route.params.slug).then(
         (res) => (this.article = res.data)
-    );
+  )
+    ;
 
     if (this.$route.name === "singleArticle") this.animateArticleOnScroll();
   },
