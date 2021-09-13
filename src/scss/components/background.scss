@@ -107,3 +107,21 @@
         width: 100%;
     }
 }
+
+@keyframes animation-blog-layer-3 {
+    0% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes animation-blog-layer-4 {
+    0% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
