@@ -48,12 +48,12 @@
         <div class="annexes">
           <p>Annexes</p>
           <div class="images">
-            <a href="#"><img src="http://placehold.jp/370x220.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/370x380.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/370x400.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/370x280.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/370x220.png" alt=""/></a>
-            <a href="#"><img src="http://placehold.jp/370x220.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
+            <a href="#"><img src="http://placehold.jp/1920x1080.png" alt=""/></a>
           </div>
         </div>
       </div>

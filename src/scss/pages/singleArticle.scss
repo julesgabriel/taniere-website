@@ -152,27 +152,24 @@ body {
           }
 
           .images {
-            max-height: 750px;
             display: flex;
             align-items: center;
             flex-direction: column;
-            flex-wrap: wrap;
-            @media screen and(max-width: 1350px) {
-              max-height: 1200px;
-            }
-            @media screen and(max-width: 850px) {
-              max-height: none;
+            a{
+              display: flex;
+              justify-content: center;
+              img {
+                margin: 25px 0;
+                width: 95%;
+                @media screen and(max-width: 850px) {
+                  margin: 5.5px 0;
+                }
+                @media screen and(max-width: 500px) {
+                  max-width: 330px;
+                }
+              }
             }
 
-            img {
-              margin: 15px 0;
-              @media screen and(max-width: 850px) {
-                margin: 5.5px 0;
-              }
-              @media screen and(max-width: 500px) {
-                max-width: 330px;
-              }
-            }
           }
         }
       }
