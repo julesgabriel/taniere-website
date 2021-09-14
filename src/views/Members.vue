@@ -1,13 +1,22 @@
 <template>
-    <h1>Membres</h1>
+  <div class="members-content">
+    <ComingSoon />
+  </div>
 </template>
 
 <script>
+import ComingSoon from "@/components/comingSoon";
+
 export default {
-    name: "Membres"
-}
+  name: "Membres",
+  components: {
+    ComingSoon,
+  },
+};
 </script>
 
 <style scoped>
-
+.nav{
+    background-color: red;
+}
 </style>

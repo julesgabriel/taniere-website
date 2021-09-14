@@ -1,13 +1,18 @@
 <template>
-    <div class="comingSoon"></div>
+  <div class="comingSoon-background">
+    <div class="comingSoon-content">
+      <p class="comingSoon-title">Coming soon</p>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.comingSoon-background {
+  background-image: url("~@/assets/backgrounds/comingSoon.png");
+}
 </style>
+
