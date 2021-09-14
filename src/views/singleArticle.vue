@@ -2,7 +2,7 @@
   <div class="singleArticle" v-if="article">
     <div class="article">
       <div class="banner">
-        <img :src="envApiUrl + article.mainPhoto.formats.large.url" alt=""/>
+        <img :src="envApiUrl + article.mainPhoto.formats.large !== undefined ? article.mainPhoto.formats.large.url : article.mainPhoto.formats.medium.url" alt=""/>
       </div>
       <div class="content">
         <div class="top">
@@ -62,7 +62,6 @@ import MarkdownItVue from "markdown-it-vue";
 import "markdown-it-vue/dist/markdown-it-vue.css";
 import navigate from "../logic/navigation";
 import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
-// import ArticleTag from "@/components/articleTag.vue";
 
 export default {
   name: "singleArticle",

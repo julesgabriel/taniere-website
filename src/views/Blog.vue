@@ -53,8 +53,7 @@
       <div
           v-for="filter in filters"
           :key="'filter-' + filter.id"
-          class="container-tags-cards"
-      >
+          class="container-tags-cards">
         <div class="container-tags">
           <ArticleTag
               v-if="getActiveFilter(filter.name)"
