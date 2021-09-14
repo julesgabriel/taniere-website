@@ -1,10 +1,14 @@
 <template>
-    <h1>Event</h1>
+    <ComingSoon/>
 </template>
 
 <script>
+import ComingSoon from "@/components/comingSoon";
 export default {
-    name: "Events"
+    name: "Events",
+  components: {
+      ComingSoon
+  }
 }
 </script>
 

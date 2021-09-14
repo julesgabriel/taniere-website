@@ -1,7 +1,5 @@
 <template>
-  <div class="members-content">
-    <ComingSoon />
-  </div>
+  <ComingSoon/>
 </template>
 
 <script>
@@ -16,7 +14,5 @@ export default {
 </script>
 
 <style scoped>
-.nav{
-    background-color: red;
-}
+
 </style>
