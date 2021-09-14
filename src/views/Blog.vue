@@ -95,6 +95,19 @@ import navigate from "../logic/navigation";
 import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
 
 export default {
+  name: "Blog",
+  metaInfo: {
+    title: 'IIMPACT - Blog',
+    htmlAttrs: {
+      lang: 'en',
+      amp: true
+    },
+  },
+  meta: [
+    {charset: 'utf-8'},
+    {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+    {name: 'description', content: 'my website description'}
+  ],
   components: {
     BackgroundBlog,
     ArticleCard,

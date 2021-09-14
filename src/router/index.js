@@ -5,8 +5,9 @@ import Members from "../views/Members";
 import Events from "../views/Events";
 import Blog from "../views/Blog";
 import singleArticle from '../views/singleArticle.vue'
+import Meta from "vue-meta"
 
-
+Vue.use(Meta);
 Vue.use(VueRouter);
 
 const routes = [
