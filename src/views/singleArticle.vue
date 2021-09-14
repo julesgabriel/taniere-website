@@ -33,12 +33,6 @@
         <h2 id="title">{{ this.article.title }}</h2>
         <div class="tags">
           <div id="devData">{{ this.article.category.name }}</div>
-          <!-- <ArticleTag
-            :tagname="this.artcle.category.name"
-            v-bind:class="{
-              unclickable,
-            }"
-          /> -->
         </div>
         <markdown-it-vue class="text" :content="article.content"/>
         <div class="authors">
