@@ -1,42 +1,42 @@
 <template>
   <nav class="nav" :style="deviceHeight" :class="navClass">
     <div class="logo">
-      <img src="../assets/logos/logo.svg" alt="Logo iimpact" />
+      <img src="../assets/logos/logo.svg" alt="Logo iimpact"/>
     </div>
     <ul class="container-links">
       <li
-        ref="Home"
-        @mouseenter="setIndicatorPosition('Home')"
-        @mouseleave="setIndicatorPosition($route.name)"
-        @click="navigate('Home')"
+          ref="Home"
+          @mouseenter="setIndicatorPosition('Home')"
+          @mouseleave="setIndicatorPosition($route.name)"
+          @click="navigate('Home')"
       >
         Accueil
       </li>
       <li
-        ref="Members"
-        @mouseenter="setIndicatorPosition('Members')"
-        @mouseleave="setIndicatorPosition($route.name)"
-        @click="navigate('Members')"
+          ref="Members"
+          @mouseenter="setIndicatorPosition('Members')"
+          @mouseleave="setIndicatorPosition($route.name)"
+          @click="navigate('Members')"
       >
         Membres
       </li>
       <li
-        ref="Events"
-        @mouseenter="setIndicatorPosition('Events')"
-        @mouseleave="setIndicatorPosition($route.name)"
-        @click="navigate('Events')"
+          ref="Events"
+          @mouseenter="setIndicatorPosition('Events')"
+          @mouseleave="setIndicatorPosition($route.name)"
+          @click="navigate('Events')"
       >
         Évènements
       </li>
       <li
-        ref="Blog"
-        @mouseenter="setIndicatorPosition('Blog')"
-        @mouseleave="setIndicatorPosition($route.name)"
-        @click="navigate('Blog')"
+          ref="Blog"
+          @mouseenter="setIndicatorPosition('Blog')"
+          @mouseleave="setIndicatorPosition($route.name)"
+          @click="navigate('Blog')"
       >
         Blog
       </li>
-      <div :style="indicatorclass" class="indicator"></div>
+      <div :style="indicatorStyle" class="indicator"></div>
     </ul>
   </nav>
 </template>
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      indicatorclass: "",
+      indicatorStyle: "",
       navClass: "",
     };
   },
@@ -57,15 +57,13 @@ export default {
     this.changeIndicatorColorAccordingToRouteContext();
   },
   mounted() {
-    window.addEventListener("load", () =>
-      this.setIndicatorPosition(this.$route.name)
-    );
+    this.setIndicatorPosition(this.$route.name === "singleArticle" ? "Blog" : this.$route.name)
   },
   computed: {
     deviceHeight() {
       return window.innerWidth < 810
-        ? "height: " + window.innerHeight + "px"
-        : "";
+          ? "height: " + window.innerHeight + "px"
+          : "";
     },
   },
   methods: {
@@ -73,9 +71,9 @@ export default {
       if (this.$refs[route]) {
         if (route === "Blog") widthValue = 130;
         let width =
-          " width: " + (this.$refs[route].offsetWidth - widthValue) + "px;";
+            " width: " + (this.$refs[route].offsetWidth - widthValue) + "px;";
         let position = "left: " + (this.$refs[route].offsetLeft + 95) + "px;";
-        this.indicatorclass = this.indicatorclass + width + position;
+        this.indicatorStyle = this.indicatorStyle + width + position;
       }
     },
     navigate(route) {
@@ -83,13 +81,13 @@ export default {
         this.navClass = "";
         this.$emit("close-menu");
       }
-      this.$router.push({ name: route });
+      this.$router.push({name: route});
       this.setIndicatorPosition(route);
     },
     changeIndicatorColorAccordingToRouteContext() {
       this.$route.name === "singleArticle"
-        ? (this.indicatorclass = "background: #FECC50")
-        : (this.indicatorclass = "background: #FFFFFF");
+          ? (this.indicatorStyle = "background: #FECC50")
+          : (this.indicatorStyle = "background: #FFFFFF");
     },
   },
   watch: {

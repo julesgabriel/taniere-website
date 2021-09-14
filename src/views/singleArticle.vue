@@ -48,7 +48,8 @@
         <div v-if="article.annexes.length > 0" class="annexes">
           <p>Annexes</p>
           <div class="images">
-            <img v-for="annexe in article.annexes" :key="annexe.id" :src="envApiUrl + annexe.formats.medium.url" alt=""/>
+            <img v-for="annexe in article.annexes" :key="annexe.id" :src="envApiUrl + annexe.formats.medium.url"
+                 alt=""/>
           </div>
         </div>
       </div>
@@ -79,11 +80,11 @@ export default {
     navigate,
     renderAuthorsSentence(authors) {
       let sentence = `Ecrit par ${authors[0].name}` + "\n";
+      sentence += "avec la participation "
       if (authors.length > 1) {
-        sentence += `avec la participation de `;
         let arrayToConcatSentenceWith = [];
         for (let i = 1; i < authors.length; i++)
-          arrayToConcatSentenceWith.push(authors[i].name);
+          arrayToConcatSentenceWith.push(`${/^[aeiou]$/i.test(authors[i].name[0].toLowerCase()) ? 'd\'' : 'de '}${authors[i].name}`);
         sentence += arrayToConcatSentenceWith.join(" et ");
       }
       return sentence;
@@ -104,7 +105,7 @@ export default {
   mounted() {
     GetDataFetchedFromApi("articles", this.$route.params.slug).then(
         (res) => (this.article = res.data)
-  )
+    )
     ;
 
     if (this.$route.name === "singleArticle") this.animateArticleOnScroll();

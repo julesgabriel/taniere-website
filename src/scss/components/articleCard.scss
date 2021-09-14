@@ -30,6 +30,7 @@
       }
     }
   }
+
   .badgeMobile {
     display: block;
     position: absolute;
@@ -40,7 +41,7 @@
     box-shadow: 2.5px 3px white;
     right: 126px;
     top: -27px;
-    @media screen and(min-width:550px) {
+    @media screen and(min-width: 550px) {
       display: none;
     }
   }
@@ -69,16 +70,19 @@
       color: white;
     }
   }
+
   .bottom {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .content {
       padding: 0px 20px;
       height: 187px;
       @media screen and(max-width: 1775px) {
         height: 160px;
       }
+
       h2 {
         font-weight: 600;
         font-size: 26px;
@@ -127,6 +131,7 @@
     .authors {
       display: flex;
       padding: 12px 20px 0;
+
       img {
         width: 2rem;
         height: 2rem;
@@ -143,6 +148,12 @@
 
   .content {
     .arrow {
+      transition-duration: 500ms;
+      opacity: 0.8;
+      transform: translate(20px, -25px);
+    }
+
+    .bestOfArrow {
       transition-duration: 500ms;
       opacity: 0.8;
       transform: translate(20px, -25px);
@@ -209,11 +220,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
     .content {
       margin-top: 0px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       h2 {
         font-size: 24px;
         letter-spacing: 0em;
@@ -232,15 +245,23 @@
         }
       }
 
+
       .arrow {
         position: absolute;
-        left: 200px;
-        bottom: 15px;
+        right: 55px;
+        bottom: 95px;
+        opacity: 0;
+      }
+
+      .bestOfArrow {
+        position: absolute;
+        left: 10rem;
+        bottom: 1rem;
         opacity: 0;
       }
 
       .description {
-        margin: 5px 0px 0px 0px;
+        margin: 5px 0 0 0;
         @media screen and(max-width: 1600px) {
           font-size: 15px;
           margin: 0;
@@ -249,7 +270,6 @@
 
       .authors {
         display: flex;
-        // padding: 12px 20px 0;
         img {
           width: 2rem;
           height: 2rem;
@@ -266,7 +286,7 @@
   filter: brightness(1.15);
 
   .content {
-    .arrow {
+    .bestOfArrow {
       transition-duration: 500ms;
       opacity: 0.8;
       transform: translate(20px, -10px);

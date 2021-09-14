@@ -1,32 +1,32 @@
 <template>
   <div class="blog">
     <div class="background">
-      <BackgroundBlog />
+      <BackgroundBlog/>
     </div>
     <div class="blog-text-bestOfContainer">
       <div class="leftText">
         <h1 class="title">BLOG</h1>
         <p>
           Vous cherchez de la lecture ? Ça se passe ici...
-          <br />
+          <br/>
           Réservé uniquement pour les curieux
         </p>
       </div>
       <div
-        class="bestOfContainer"
-        v-for="(article, index) in articles.filter((item) => item.bestOf)"
-        :key="index"
+          class="bestOfContainer"
+          v-for="(article, index) in articles.filter((item) => item.bestOf)"
+          :key="index"
       >
         <ArticleCard
-          :mainPhoto="article.mainPhoto"
-          :title="article.title"
-          :date="article.date"
-          :description="article.preview"
-          :author="article.authors"
-          :tagname="article.category.name"
-          :bestOf="article.bestOf"
-          @clicked="navigate('article', article.slug)"
-          v-bind:class="{
+            :mainPhoto="article.mainPhoto"
+            :title="article.title"
+            :date="article.date"
+            :description="article.preview"
+            :author="article.authors"
+            :tagname="article.category.name"
+            :bestOf="article.bestOf"
+            @clicked="navigate('article', article.slug)"
+            v-bind:class="{
             bestOf,
           }"
         />
@@ -38,29 +38,29 @@
         <p class="text">Nos thèmes</p>
         <div class="tags">
           <ArticleTag
-            v-for="filter in filters"
-            :key="filter.id"
-            v-bind:class="{
+              v-for="filter in filters"
+              :key="filter.id"
+              v-bind:class="{
               active: filter.isActive,
               clickable: clickableFilters,
             }"
-            v-on:click.native="changeClass(filter.id)"
-            :tagname="filter.name"
-            :clickable="clickableFilters"
+              v-on:click.native="changeClass(filter.id)"
+              :tagname="filter.name"
+              :clickable="clickableFilters"
           />
         </div>
       </div>
       <div
-        v-for="filter in filters"
-        :key="'filter-' + filter.id"
-        class="container-tags-cards"
+          v-for="filter in filters"
+          :key="'filter-' + filter.id"
+          class="container-tags-cards"
       >
         <div class="container-tags">
           <ArticleTag
-            v-if="getActiveFilter(filter.name)"
-            :tagname="filter.name"
-            :vertical="vertical"
-            v-bind:class="{
+              v-if="getActiveFilter(filter.name)"
+              :tagname="filter.name"
+              :vertical="vertical"
+              v-bind:class="{
               vertical,
               unclickable,
             }"
@@ -70,15 +70,15 @@
           <div v-for="article in articles" :key="'article-' + article.id">
             <div v-if="!article.bestOf">
               <ArticleCard
-                v-if="filter.name === article.category.name"
-                :mainPhoto="article.mainPhoto"
-                :title="article.title"
-                :date="article.date"
-                :description="article.preview"
-                :author="article.authors"
-                :tagname="article.category.name"
-                :bestOf="article.bestOf"
-                @clicked="navigate('article', article.slug)"
+                  v-if="filter.name === article.category.name"
+                  :mainPhoto="article.mainPhoto"
+                  :title="article.title"
+                  :date="article.date"
+                  :description="article.preview"
+                  :author="article.authors"
+                  :tagname="article.category.name"
+                  :bestOf="article.bestOf"
+                  @clicked="navigate('article', article.slug)"
               />
             </div>
           </div>
@@ -109,6 +109,7 @@ export default {
       clickableFilters: true,
       unclickable: true,
       bestOf: true,
+      noArticle: "Pas d'articles"
     };
   },
   methods: {
@@ -117,26 +118,26 @@ export default {
     getActiveFilter(filterName) {
       if (this.filters.find((filter) => filter.isActive)) {
         let currentFilter = this.filters.find(
-          (filter) => filter.name === filterName
+            (filter) => filter.name === filterName
         );
         if (currentFilter.isActive)
           return !!this.articles.find(
-            (article) => article.category.name === filterName
+              (article) => article.category.name === filterName
           );
         else return false;
       } else
         return !!this.articles.find(
-          (article) => article.category.name === filterName
+            (article) => article.category.name === filterName
         );
     },
     navigate,
     fetchCategories() {
       GetDataFetchedFromApi("categories").then((res) =>
-        res.data.forEach((el, index) => {
-          el.isActive = false;
-          el.id = index;
-          this.filters.push(el);
-        })
+          res.data.forEach((el, index) => {
+            el.isActive = false;
+            el.id = index;
+            this.filters.push(el);
+          })
       );
     },
     fetchArticles() {
@@ -160,7 +161,7 @@ export default {
     window.addEventListener("resize", () => {
       this.bestOfResponsive();
     });
-    
+
   },
 };
 </script>
@@ -171,7 +172,8 @@ export default {
   transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
   opacity: 0;
 }
 </style>
