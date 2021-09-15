@@ -1,0 +1,118 @@
+/* --------------------------- background FILE -------------------------- */
+
+.background-home{
+  height: 100vh;
+  position: relative;
+  padding-top: 5%;
+  //@media screen and(max-width: 1350px) {
+    //height: 60vh;
+  //}
+  @for $i from 1 through 5 {
+    .layer-home-#{$i} {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: calc(50 - #{$i});
+      animation: animation-home-layer-#{$i} 500ms ease-out;
+      animation-fill-mode: forwards;
+      @media screen and(max-width: 1080px) {
+        width: 1180px;
+        transform: translateX(-100px);
+      }
+      @media screen and(max-width: 900px) {
+        width: 1100px;
+        transform: translateX(-100px);
+      }
+      @media screen and(max-width: 600px) {
+        // width: 750px;
+        transform: translateX(-220px);
+      }
+    }
+    .layer-home-1 {
+      transform: translateX(-100px);
+      width: 100%;
+      animation-delay: 100ms;
+      @media screen and(max-width: 1080px) {
+        width: 1180px !important;
+        transform: translateX(-100px) !important;
+      }
+      @media screen and(max-width: 900px) {
+        width: 1100px !important;
+        transform: translateX(-100px) !important;
+      }
+      @media screen and(max-width: 600px) {
+        // width: 750px !important;
+        transform: translateX(-220px) !important;
+      }
+    }
+    .layer-home-2 {
+      transform: translateX(-50px);
+      width: 100%;
+      animation-delay: 100ms;
+      @media screen and(max-width: 1080px) {
+        width: 1180px !important;
+        transform: translateX(-100px) !important;
+      }
+      @media screen and(max-width: 900px) {
+        width: 1100px !important;
+        transform: translateX(-100px) !important;
+      }
+      @media screen and(max-width: 600px) {
+        // width: 750px !important;
+        transform: translateX(-220px) !important;
+      }
+    }
+  }
+  .moonHome {
+    position: absolute;
+    left:16%;
+    min-width: 250px;
+    @media screen and(max-width: 900px) {
+      left: 15%;
+    }
+    @media screen and(max-width: 600px) {
+      left: 30%;
+      min-width: 200px;
+    }
+    @media screen and(max-width: 500px) {
+      left: 20%;
+    }
+  }
+}
+
+// animation
+@keyframes animation-home-layer-1 {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes animation-home-layer-2 {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes animation-home-layer-3 {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes animation-home-layer-4 {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
