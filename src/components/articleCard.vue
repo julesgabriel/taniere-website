@@ -4,7 +4,7 @@
       <p>Best of</p>
     </div>
     <div class="top">
-      <img class="thumbnail" :src="envApiUrl + mainPhoto.url" alt="miniature"/>
+      <img class="thumbnail" v-lazy="envApiUrl + mainPhoto.url" alt="miniature"/>
       <p>
         {{ new Date(date).getDay() }} / {{ new Date(date).getMonth() }} /
         {{ new Date(date).getFullYear() }}
@@ -42,7 +42,7 @@
       <div class="authors">
         <img
             v-for="(item, index) in author"
-            :src="envApiUrl + item.avatar.formats.thumbnail.url"
+            v-lazy="envApiUrl + item.avatar.formats.thumbnail.url"
             alt="ok"
             :key="index"
         />

@@ -81,7 +81,7 @@ export default {
         this.navClass = "";
         this.$emit("close-menu");
       }
-      this.$router.push({name: route});
+      this.$router.push({name: route}).catch(()=>{});
       this.setIndicatorPosition(route);
     },
     changeIndicatorColorAccordingToRouteContext() {

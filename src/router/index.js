@@ -3,10 +3,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Members from "../views/Members";
 import Events from "../views/Events";
-import Blog from "../views/Blog";
-import singleArticle from '../views/singleArticle.vue'
+import Meta from "vue-meta"
+
+const Blog = () => import(/* webpackChunkName: "blog" */'../views/Blog');
+const singleArticle = () => import(/* webpackChunkName: "blog" */'../views/singleArticle');
 
 
+Vue.use(Meta);
 Vue.use(VueRouter);
 
 const routes = [

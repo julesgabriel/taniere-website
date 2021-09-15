@@ -2,7 +2,9 @@
   <div class="singleArticle" v-if="article">
     <div class="article">
       <div class="banner">
-        <img :src="envApiUrl + article.mainPhoto.formats.large !== undefined ? article.mainPhoto.formats.large.url : article.mainPhoto.formats.medium.url" alt=""/>
+        <img
+            :src="article.mainPhoto.formats.large !== undefined ? envApiUrl + article.mainPhoto.formats.large.url : envApiUrl + article.mainPhoto.url"
+            alt=""/>
       </div>
       <div class="content">
         <div class="top">
@@ -31,12 +33,6 @@
         <h2 id="title">{{ this.article.title }}</h2>
         <div class="tags">
           <div id="devData">{{ this.article.category.name }}</div>
-          <!-- <ArticleTag
-            :tagname="this.artcle.category.name"
-            v-bind:class="{
-              unclickable,
-            }"
-          /> -->
         </div>
         <markdown-it-vue class="text" :content="article.content"/>
         <div class="authors">
@@ -65,9 +61,22 @@ import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
 
 export default {
   name: "singleArticle",
+  metaInfo() {
+    return {
+      title: `${this.article.shortTitle} - IIMPACT`,
+      htmlAttrs: {
+        lang: 'fr',
+        amp: true
+      },
+    }
+  },
+  meta: [
+    {charset: 'utf-8'},
+    {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+    {name: 'description', content: 'my website description'}
+  ],
   components: {
     MarkdownItVue,
-    // ArticleTag
   },
   data() {
     return {
@@ -103,10 +112,11 @@ export default {
   },
   mounted() {
     GetDataFetchedFromApi("articles", this.$route.params.slug).then(
-        (res) => (this.article = res.data)
-    )
-    ;
-
+        (res) => {
+          this.article = res.data
+          this.title = res.data.title
+        }
+    );
     if (this.$route.name === "singleArticle") this.animateArticleOnScroll();
   },
 };
