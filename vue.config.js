@@ -1,13 +1,19 @@
 const path = require('path')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
 
 module.exports = {
     chainWebpack: config => {
         const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
         types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
     },
-
-    // preprod
-    //publicPath: '/' //Path public
+    configureWebpack: {
+        plugins: [
+            new PrerenderSPAPlugin({
+                staticDir: path.join(__dirname, 'dist'),
+                routes: ['/', '/blog'],
+            })
+        ]
+    }
 }
 
 function addStyleResource (rule) {
