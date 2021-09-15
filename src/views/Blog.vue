@@ -88,7 +88,6 @@
 </template>
 
 <script>
-import BackgroundBlog from "@/components/backgroundBlog.vue";
 import ArticleCard from "@/components/articleCard.vue";
 import ArticleTag from "@/components/articleTag.vue";
 import navigate from "../logic/navigation";
@@ -99,17 +98,17 @@ export default {
   metaInfo: {
     title: 'IIMPACT - Blog',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'fr',
       amp: true
     },
   },
   meta: [
     {charset: 'utf-8'},
     {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-    {name: 'description', content: 'my website description'}
+    {name: 'description', content: 'my website description'},
   ],
   components: {
-    BackgroundBlog,
+    BackgroundBlog: () => import('@/components/backgroundBlog.vue'),
     ArticleCard,
     ArticleTag,
   },

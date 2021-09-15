@@ -77,7 +77,6 @@ export default {
   ],
   components: {
     MarkdownItVue,
-    // ArticleTag
   },
   data() {
     return {
