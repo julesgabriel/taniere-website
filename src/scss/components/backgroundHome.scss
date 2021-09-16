@@ -10,7 +10,7 @@
       position: absolute;
       width: 100%;
       min-width: 1000px;
-      bottom: 0;
+      bottom: 0%;
       left: 0;
       z-index: calc(50 - #{$i});
       animation: animation-home-layer-#{$i} 500ms ease-out;
@@ -18,14 +18,8 @@
     }
     .layer-home-1 {
       transform: translateX(-100px);
-      width: 100%;
       animation-delay: 100ms;
-      @media screen and(max-width: 1480px) {
-        bottom: -2%;
-      }
-      @media screen and(max-width: 1080px) {
-        bottom: -4%;
-      }
+
       @media screen and(max-width: 800px) {
         transform: translate(-100px) !important;
       }

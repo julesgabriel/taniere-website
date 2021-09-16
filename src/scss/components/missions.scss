@@ -1,0 +1,15 @@
+.mission{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .logo{
+  }
+  .missionName{
+    color: white;
+    font-family: Saira;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+}

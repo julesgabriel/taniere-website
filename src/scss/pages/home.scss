@@ -82,6 +82,13 @@
   .content{
     width: 100%;
     background-color: #333333;
+    .missions{
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: 50px 0px 150px;
+    }
   }
 }
 
