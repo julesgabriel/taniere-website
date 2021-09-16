@@ -4,13 +4,89 @@
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 .home {
-    background-color: $yellow;
-    min-height: 100vh;
-    min-width: 100vw;
+  background-color: $yellow;
+  min-height: 100vh;
+  min-width: 100vw;
+  .background {
+    position: relative;
+    .top-content {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      bottom: 12%;
+      left: 5%;
+      z-index: 150;
+      @media screen and(max-width: 800px) {
+        bottom: 55%;
+        width: 100%;
+        align-items: center;
+        left: 0%;
+      }
+      .title {
+        font-size: 9.75rem;
+        font-family: bebas neue;
+        color: #FBAF07;
+        letter-spacing: 0.4rem;
+        @media screen and(max-width: 800px) {
+          font-size: 5.3rem;
+          color: #333;
+        }
+      }
+      .description {
+        font-size: 22px;
+        font-family: "Saira", sans-serif;
+        color: white;
+        @media screen and(max-width: 800px) {
+          font-size: 20px;
+        }
+      }
+    }
+    .scrollDown {
+      display: flex;
+      align-items: center;
+      transform-origin: left;
+      transform: rotate(-90deg);
+      position: absolute;
+      right: 0%;
+      bottom: 10%;
+      z-index: 150;
+      @media screen and(max-width: 800px){
+        display: none;
+      }
+      .mouse {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 54px;
+        height: 30px;
+        border: 3px solid $yellow;
+        border-radius: 15px;
+        margin-right: 10px;
+        span {
+          height: 3px;
+          width: 18px;
+          background-color: $yellow;
+          border-radius: 25px;
+          margin-right: 7px;
+        }
+      }
+      p {
+        text-transform: uppercase;
+        font-size: .7rem;
+        font-family: "Saira Condensed", sans-serif;
+        color: white;
+        letter-spacing: 0.06rem;
+      }
+    }
+  }
+  .content{
+    width: 100%;
+    background-color: #333333;
+  }
 }
 
 #app {
-    background-color: rgb(245, 245, 245);
-    min-height: 100vh;
-    min-width: 100%;
+  background-color: rgb(245, 245, 245);
+  min-height: 100vh;
+  min-width: 100%;
 }
