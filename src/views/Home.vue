@@ -23,6 +23,26 @@
             :name="mission.name"
         />
       </div>
+      <div class="presentation">
+        <div class="top">
+          <iframe class="video" src="https://www.youtube.com/embed/xJY0YGr4wLE" title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+          <div class="videoText">
+            <div class="title">Vidéo de présentation</div>
+            <div class="text">Chez IIMPACT, nous avons pour vocation de faire de votre parcours à l’IIM, une expérience
+              unique. <br> <br>Quelque soit votre tempérament ou vos ambitions, nous nous engageons à vous accompagner
+              que ce soit de manière scolaire ou extra-scolaire.
+            </div>
+          </div>
+        </div>
+
+        <p class="bottomText">Nous avons des équipes dédiées à la conception visuelle, au motion design, au
+          développement web, à la conception 3D ou encore à l’évènementiel.<br> <br> sont ces compétences qui permettent
+          d’accomplir notre mission : votre intégration.
+        </p>
+      </div>
     </div>
   </div>
 </template>
