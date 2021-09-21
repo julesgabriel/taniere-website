@@ -55,16 +55,33 @@
             }"
         />
       </div>
-    </div>
-    <BackgroundHomeBottom/>
-    <!--<Button
-        :name="button2"
-        :link="link"
-        :isBlack="isBlack"
-        v-bind:class="{
+      <BackgroundHomeBottom/>
+      <div class="actu-events">
+        <div class="actu">
+          <p class="title">Notre actualité</p>
+          <div class="video">
+            <div class="text">
+              <p class="title">Semaine d’intégration</p>
+              <p class="description">IIMPACT, le Club Ecole de l’IIM, prend le contrôle de la semaine d’intégration. Du
+                9 au 13 septembre se tenait la Welcome Week, la semaine d’intégration...</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="events">
+          <p class="title">Nos derniers évènements</p>
+          <!-- Component -->
+          <Button
+              :name="button2"
+              :link="link"
+              :isBlack="isBlack"
+              v-bind:class="{
               black: isBlack
         }"
-    />-->
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
