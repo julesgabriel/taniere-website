@@ -71,7 +71,7 @@ export default {
     },
   },
   mounted() {
-    this.animateLayersOnScroll()
+    //this.animateLayersOnScroll()
   }
 }
 </script>

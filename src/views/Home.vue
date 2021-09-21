@@ -39,11 +39,31 @@
         </div>
 
         <p class="bottomText">Nous avons des équipes dédiées à la conception visuelle, au motion design, au
-          développement web, à la conception 3D ou encore à l’évènementiel.<br> <br> sont ces compétences qui permettent
+          développement web, à la conception 3D ou encore à l’évènementiel.<br> <br> Ce sont ces compétences qui
+          permettent
           d’accomplir notre mission : votre intégration.
         </p>
+
+      </div>
+      <div class="pres-button">
+        <Button
+            :name="button1"
+            :link="link"
+            :isYellow="isYellow"
+            v-bind:class="{
+              yellow: isYellow
+            }"
+        />
       </div>
     </div>
+    <!--<Button
+        :name="button2"
+        :link="link"
+        :isBlack="isBlack"
+        v-bind:class="{
+              black: isBlack
+        }"
+    />-->
   </div>
 </template>
 
@@ -51,6 +71,7 @@
 
 import BackgroundHome from "@/components/backgroundHome.vue";
 import Missions from "@/components/missions.vue";
+import Button from "@/components/button.vue";
 
 
 export default {
@@ -58,9 +79,15 @@ export default {
   components: {
     BackgroundHome,
     Missions,
+    Button
   },
   data() {
     return {
+      button1: "Voir notre magazine",
+      button2: "Voir tous nos évènements",
+      link: "#",
+      isYellow: true,
+      isBlack: true,
       missions: [
         {
           name: "Solidarité",

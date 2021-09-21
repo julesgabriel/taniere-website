@@ -97,7 +97,7 @@
       width: 100%;
       justify-content: space-evenly;
       flex-wrap: wrap;
-      margin: 50px 0px 150px;
+      margin-bottom: 150px;
     }
 
     .presentation {
@@ -162,10 +162,17 @@
         font-weight: 400;
         margin-top: 150px;
         @media screen and(max-width: 1400px) {
-          width: 80%;
+          width: 100%;
           margin-top: 100px;
         }
       }
+
+    }
+    .pres-button{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 100px;
     }
   }
 }
