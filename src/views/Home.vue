@@ -56,6 +56,7 @@
         />
       </div>
     </div>
+    <BackgroundHomeBottom/>
     <!--<Button
         :name="button2"
         :link="link"
@@ -70,6 +71,7 @@
 <script>
 
 import BackgroundHomeHeader from "@/components/backgroundHomeHeader.vue";
+import BackgroundHomeBottom from "@/components/backgroundHomeBottom.vue";
 import Missions from "@/components/missions.vue";
 import Button from "@/components/button.vue";
 
@@ -78,6 +80,7 @@ export default {
   name: 'Home',
   components: {
     BackgroundHomeHeader,
+    BackgroundHomeBottom,
     Missions,
     Button
   },

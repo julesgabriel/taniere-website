@@ -1,5 +1,5 @@
 <template>
-  <div class="background-home">
+  <div class="background-home background-header">
     <svg class="layer-home-1" width="1920" height="540" viewBox="0 0 1920 540" fill="none"
          xmlns="http://www.w3.org/2000/svg">
       <path

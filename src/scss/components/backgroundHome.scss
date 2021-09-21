@@ -1,10 +1,17 @@
 /* --------------------------- background FILE -------------------------- */
+.background-header{
+  height: 100vh;
+  padding-top: 5%;
+}
+
+.background-bottom{
+  height: 500px;
+  background-color: #333333;
+}
 
 .background-home {
-  height: 100vh;
   max-height: 1024px;
   position: relative;
-  padding-top: 5%;
   @for $i from 1 through 5 {
     .layer-home-#{$i} {
       position: absolute;
