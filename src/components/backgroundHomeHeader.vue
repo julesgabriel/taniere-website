@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: "backgroundHome",
+  name: "backgroundHomeHeader",
   methods: {
     animateLayersOnScroll() {
       window.addEventListener("scroll", () => {

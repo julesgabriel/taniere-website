@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="background">
-      <BackgroundHome/>
+      <BackgroundHomeHeader/>
       <div class="top-content">
         <h1 class="title">iimpact</h1>
         <p class="description">Club école de l'IIM</p>
@@ -69,7 +69,7 @@
 
 <script>
 
-import BackgroundHome from "@/components/backgroundHome.vue";
+import BackgroundHomeHeader from "@/components/backgroundHomeHeader.vue";
 import Missions from "@/components/missions.vue";
 import Button from "@/components/button.vue";
 
@@ -77,7 +77,7 @@ import Button from "@/components/button.vue";
 export default {
   name: 'Home',
   components: {
-    BackgroundHome,
+    BackgroundHomeHeader,
     Missions,
     Button
   },
