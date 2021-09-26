@@ -22,26 +22,17 @@
             :image="envApiUrl + mission.icon.url"
         />
       </div>
-      <div class="presentation">
+      <div class="presentation" v-for="presentation in presentations" :key="'presentation-' + presentation.id">
         <div class="top">
-          <iframe class="video" src="https://www.youtube.com/embed/xJY0YGr4wLE" title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
+          <img :src="envApiUrl + presentation.video.formats.large.url" class="video">
           <div class="videoText">
-            <div class="title">Vidéo de présentation</div>
-            <div class="text">Chez IIMPACT, nous avons pour vocation de faire de votre parcours à l’IIM, une expérience
-              unique. <br> <br>Quelque soit votre tempérament ou vos ambitions, nous nous engageons à vous accompagner
-              que ce soit de manière scolaire ou extra-scolaire.
+            <div class="title">{{ presentation.title }}</div>
+            <div class="text">{{ presentation.first_description }}
             </div>
           </div>
         </div>
 
-        <p class="bottomText">Nous avons des équipes dédiées à la conception visuelle, au motion design, au
-          développement web, à la conception 3D ou encore à l’évènementiel.<br> <br> Ce sont ces compétences qui
-          permettent
-          d’accomplir notre mission : votre intégration.
-        </p>
+        <p class="bottomText">{{ presentation.second_description }}</p>
 
       </div>
       <div class="pres-button">
@@ -99,7 +90,6 @@ import navigate from "../logic/navigation";
 import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
 
 
-
 export default {
   name: 'Home',
   components: {
@@ -119,29 +109,30 @@ export default {
       isBlack: true,
       events: [
         {
-          id:"1",
+          id: "1",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         },
         {
-          id:"2",
+          id: "2",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         },
         {
-          id:"3",
+          id: "3",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         }
       ],
-      missions: []
+      missions: [],
+      presentations: []
     }
 
   },
-  methods:{
+  methods: {
     GetDataFetchedFromApi,
     navigate,
     fetchMissions() {
@@ -151,9 +142,18 @@ export default {
         });
       });
     },
+    fetchPresentation() {
+      GetDataFetchedFromApi("presentations").then((res) => {
+        res.data.forEach((el) => {
+          this.presentations.push(el);
+          console.log(this.presentations)
+        });
+      });
+    },
   },
   mounted() {
     this.fetchMissions();
+    this.fetchPresentation();
   },
 }
 </script>

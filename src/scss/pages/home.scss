@@ -122,13 +122,24 @@
         }
 
         .video {
-          width: 50%;
-          height: 50vh;
+          width: 950px;
+          height: 600px;
           border-radius: 5px;
           @media screen and(max-width: 1400px) {
             width: 80%;
           }
-
+          @media screen and(max-width: 1200px) {
+            width: 600px;
+            height: 380px;
+          }
+          @media screen and(max-width: 750px) {
+            width: 400px;
+            height: 255px;
+          }
+          @media screen and(max-width: 500px) {
+            width: 100%;
+            height: 225px;
+          }
         }
 
         .videoText {
@@ -234,7 +245,6 @@
             width: 100%;
             height: 225px;
             margin-bottom: 175px;
-
           }
 
           .text {
