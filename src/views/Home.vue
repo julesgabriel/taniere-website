@@ -70,7 +70,11 @@
         </div>
         <div class="events">
           <p class="title">Nos derniers évènements</p>
-          <!-- Component -->
+          <Event v-for="event in events" :key="'event-' + event.id"
+                 :title="event.title"
+                 :src="event.src"
+                 :date="event.date"
+          />
           <Button
               :name="button2"
               :link="link"
@@ -90,6 +94,7 @@
 import BackgroundHomeHeader from "@/components/backgroundHomeHeader.vue";
 import BackgroundHomeBottom from "@/components/backgroundHomeBottom.vue";
 import Missions from "@/components/missions.vue";
+import Event from "@/components/event.vue";
 import Button from "@/components/button.vue";
 
 
@@ -99,6 +104,7 @@ export default {
     BackgroundHomeHeader,
     BackgroundHomeBottom,
     Missions,
+    Event,
     Button
   },
   data() {
@@ -108,6 +114,23 @@ export default {
       link: "#",
       isYellow: true,
       isBlack: true,
+      events: [
+        {
+          title: "Lorem Ispum",
+          date: "05/09/2021",
+          src: "http://placehold.jp/227x143.png"
+        },
+        {
+          title: "Lorem Ispum",
+          date: "05/09/2021",
+          src: "http://placehold.jp/227x143.png"
+        },
+        {
+          title: "Lorem Ispum",
+          date: "05/09/2021",
+          src: "http://placehold.jp/227x143.png"
+        }
+      ],
       missions: [
         {
           name: "Solidarité",
