@@ -98,6 +98,10 @@
       justify-content: space-evenly;
       flex-wrap: wrap;
       margin-bottom: 150px;
+      @media screen and(max-width: 750px){
+        margin-bottom: 75px;
+        align-items: flex-end;
+      }
     }
 
     .presentation {
@@ -144,6 +148,9 @@
             color: #FBAF07;
             font-weight: 700;
             margin-bottom: 40px;
+            @media screen and(max-width: 500px){
+              font-size: 2rem;
+            }
           }
 
           .text {
@@ -151,6 +158,9 @@
             font-size: 1.37rem;
             color: white;
             font-weight: 400;
+            @media screen and(max-width: 500px){
+              font-size: 1.1rem;
+            }
           }
         }
       }
@@ -165,6 +175,9 @@
         @media screen and(max-width: 1400px) {
           width: 100%;
           margin-top: 100px;
+        }
+        @media screen and(max-width: 500px){
+          font-size: 1.1rem;
         }
       }
 

@@ -17,10 +17,9 @@
       <div class="missions">
         <Missions
             v-for="mission in missions"
-            :key="mission.id"
-            :image="mission.image"
-            :alt="mission.alt"
+            :key="'mission-' + mission.id"
             :name="mission.name"
+            :image="envApiUrl + mission.icon.url"
         />
       </div>
       <div class="presentation">
@@ -96,6 +95,9 @@ import BackgroundHomeBottom from "@/components/backgroundHomeBottom.vue";
 import Missions from "@/components/missions.vue";
 import Event from "@/components/event.vue";
 import Button from "@/components/button.vue";
+import navigate from "../logic/navigation";
+import GetDataFetchedFromApi from "../logic/httpClient/getDataFetchFromApi";
+
 
 
 export default {
@@ -109,6 +111,7 @@ export default {
   },
   data() {
     return {
+      envApiUrl: process.env.VUE_APP_API_URL,
       button1: "Voir notre magazine",
       button2: "Voir tous nos évènements",
       link: "#",
@@ -116,37 +119,41 @@ export default {
       isBlack: true,
       events: [
         {
+          id:"1",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         },
         {
+          id:"2",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         },
         {
+          id:"3",
           title: "Lorem Ispum",
           date: "05/09/2021",
           src: "http://placehold.jp/227x143.png"
         }
       ],
-      missions: [
-        {
-          name: "Solidarité",
-          image: "../assets/missions/valeur2.png",
-        },
-        {
-          name: "Famille",
-          image: "../assets/missions/valeur2.png",
-        },
-        {
-          name: "Diversité",
-          image: "../assets/missions/valeur3.png",
-        }
-      ]
+      missions: []
     }
 
-  }
+  },
+  methods:{
+    GetDataFetchedFromApi,
+    navigate,
+    fetchMissions() {
+      GetDataFetchedFromApi("missions").then((res) => {
+        res.data.forEach((el) => {
+          this.missions.push(el);
+        });
+      });
+    },
+  },
+  mounted() {
+    this.fetchMissions();
+  },
 }
 </script>
