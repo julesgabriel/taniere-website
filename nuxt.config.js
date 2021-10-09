@@ -47,7 +47,14 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@nuxtjs/markdownit'
+  ],
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    runtime: true,
+  },
   axios: {
     // proxy: true
   },

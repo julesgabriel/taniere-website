@@ -34,7 +34,7 @@
         <div class="tags">
           <div id="devData">{{ this.article.category.name }}</div>
         </div>
-        <!--<markdown-it-vue class="text" :content="article.content"/>-->
+        <p class="text" v-html="$md.render(article.content)"/>
         <div class="authors">
           Article publié le
           {{ renderDateToMonthAndDateLitterals(article.date) }}<br/>{{
